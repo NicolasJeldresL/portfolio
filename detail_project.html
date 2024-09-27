@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nicolás Jeldres | Portafolio de Diseño</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar__brand">
+          <a href="index.html" class="logo"
+            ><img src="./assets/img/logo_title.png" alt="logo"
+          /></a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Sección de Detalles del Proyecto -->
+    <section id="project-detail" class="section project-detail">
+      <div class="project-detail__content">
+        <h2 id="project-title"></h2>
+        <div class="project-detail__image">
+          <img id="project-image" src="" alt="Imagen del Proyecto" style="width: 20rem;" />
+        </div>
+        <div class="project-detail__description">
+          <p id="project-description"></p>
+          <ul
+            id="project-technologies"
+            class="project-detail__technologies"
+          ></ul>
+          <div class="project-detail__links">
+            <a id="github-link" href="https://github.com/NicolasJeldresL" target="_blank" class="btn">GitHub</a>
+            <a id="live-demo-link" href="https://github.com/NicolasJeldresL/cuppon" class="btn"
+              >Ver Demo</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2024 Nicolás Jeldres | Portafolio de Diseño</p>
+    </footer>
+
+    <script>
+      // Redirigir a los detalles del proyecto
+      const urlParams = new URLSearchParams(window.location.search);
+      const title = urlParams.get("title");
+      const image = urlParams.get("image");
+      const description = urlParams.get("description");
+      const technologies = JSON.parse(urlParams.get("technologies"));
+      const github = urlParams.get("github");
+      const demo = urlParams.get("demo");
+
+      // Asignar los valores a los elementos del DOM
+      document.getElementById("project-title").innerText = title;
+      document.getElementById("project-image").src = image;
+      document.getElementById("project-description").innerText = description;
+
+      // Añadir las tecnologías a la lista
+      const techList = document.getElementById("project-technologies");
+      technologies.forEach((tech) => {
+        const li = document.createElement("li");
+        li.innerText = tech;
+        techList.appendChild(li);
+      });
+
+      // Asignar los enlaces
+      document.getElementById("github-link").href = github || "https://github.com/NicolasJeldresL";
+      document.getElementById("live-demo-link").href = demo || "index.html";
+    </script>
+  </body>
+</html>
